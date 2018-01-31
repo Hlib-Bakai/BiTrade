@@ -60,7 +60,9 @@
             this.buttonSettings = new System.Windows.Forms.Button();
             this.timerBtcPrice = new System.Windows.Forms.Timer(this.components);
             this.panel5 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.ConnectionGood = new System.Windows.Forms.PictureBox();
+            this.ConnectionLow = new System.Windows.Forms.PictureBox();
+            this.ConnectionBad = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -73,7 +75,9 @@
             this.balancePage.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelTabs.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionGood)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionLow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionBad)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -413,22 +417,46 @@
             this.panel5.Size = new System.Drawing.Size(547, 10);
             this.panel5.TabIndex = 3;
             // 
-            // pictureBox2
+            // ConnectionGood
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(582, 20);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
+            this.ConnectionGood.Image = ((System.Drawing.Image)(resources.GetObject("ConnectionGood.Image")));
+            this.ConnectionGood.Location = new System.Drawing.Point(582, 20);
+            this.ConnectionGood.Name = "ConnectionGood";
+            this.ConnectionGood.Size = new System.Drawing.Size(24, 24);
+            this.ConnectionGood.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ConnectionGood.TabIndex = 10;
+            this.ConnectionGood.TabStop = false;
+            // 
+            // ConnectionLow
+            // 
+            this.ConnectionLow.Image = ((System.Drawing.Image)(resources.GetObject("ConnectionLow.Image")));
+            this.ConnectionLow.Location = new System.Drawing.Point(582, 20);
+            this.ConnectionLow.Name = "ConnectionLow";
+            this.ConnectionLow.Size = new System.Drawing.Size(24, 24);
+            this.ConnectionLow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ConnectionLow.TabIndex = 11;
+            this.ConnectionLow.TabStop = false;
+            this.ConnectionLow.Visible = false;
+            // 
+            // ConnectionBad
+            // 
+            this.ConnectionBad.Image = ((System.Drawing.Image)(resources.GetObject("ConnectionBad.Image")));
+            this.ConnectionBad.Location = new System.Drawing.Point(582, 20);
+            this.ConnectionBad.Name = "ConnectionBad";
+            this.ConnectionBad.Size = new System.Drawing.Size(24, 24);
+            this.ConnectionBad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ConnectionBad.TabIndex = 12;
+            this.ConnectionBad.TabStop = false;
+            this.ConnectionBad.Visible = false;
             // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.ClientSize = new System.Drawing.Size(759, 526);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.ConnectionBad);
+            this.Controls.Add(this.ConnectionLow);
+            this.Controls.Add(this.ConnectionGood);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.buttonSettings);
             this.Controls.Add(this.panel4);
@@ -458,7 +486,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panelTabs.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionGood)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionLow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionBad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -496,7 +526,9 @@
         private System.Windows.Forms.PictureBox dashBtcDOWN;
         private System.Windows.Forms.Timer timerBtcPrice;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox ConnectionGood;
+        private System.Windows.Forms.PictureBox ConnectionLow;
+        private System.Windows.Forms.PictureBox ConnectionBad;
     }
 }
 

@@ -51,7 +51,37 @@ namespace BiTrade
 
         private async void UpdateBTCPriceAsync()
         {
-            decimal newPrice = await platform.GetPriceBtc();
+            decimal newPrice = 0;
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            try
+            {
+                var task = platform.GetPriceBtc();
+                var res = await Task.WhenAny(task, Task.Delay(10000));
+                if (res == task)
+                {
+                    // Task completed within time.
+                    newPrice = task.GetAwaiter().GetResult();
+                }
+                else
+                {
+                    // Task timed out
+                    watch.Stop();
+                    SetConnectionQuality(-1);
+                    return;
+                    // LOG
+                }
+                watch.Stop();
+                SetConnectionQuality(watch.ElapsedMilliseconds);
+            }
+            catch
+            {
+                watch.Stop();
+                SetConnectionQuality(-1);
+                return;
+                // LOG
+            }           
+            
+
             dashLabelBtcPrice.Text = string.Format("{0:n0}", newPrice) + "$";
             if (oldPrice != 0)
             {
@@ -97,6 +127,32 @@ namespace BiTrade
 
             balanceLabelBtc.Text = Math.Round(btc, 6).ToString();
             balanceLabelUsd.Text = String.Format("{0:n}", usd);
+        }
+
+        #endregion
+
+        #region Connection
+
+        private void SetConnectionQuality(long miliseconds)
+        {
+            long seconds = miliseconds / 1000;
+            if (miliseconds == -1)
+            {
+                ConnectionGood.Visible = false;
+                ConnectionLow.Visible = false;
+                ConnectionBad.Visible = true;
+            }
+            else if (seconds < 5)
+            {
+                ConnectionGood.Visible = true;
+                ConnectionLow.Visible = false;
+                ConnectionBad.Visible = false;
+            } else
+            {
+                ConnectionGood.Visible = false;
+                ConnectionLow.Visible = true;
+                ConnectionBad.Visible = false;
+            }
         }
 
         #endregion
