@@ -59,18 +59,29 @@ namespace BiTrade
 
         #region Dashboard
 
-        decimal oldPrice = 0;
+        decimal oldPriceBtc = 0;
+        decimal oldPriceEth = 0;
 
         private void SetDashboardTab()
         {
             tabControl1.SelectTab("dashboardPage");
 
-            if (oldPrice == 0)
+            if (oldPriceBtc == 0)
             {
                 dashBtcDOWN.Visible = false;
                 dashBtcUP.Visible = false;
+                dashBtcChangeUp.Visible = false;
+                dashBtcChangeDown.Visible = false;
+            }
+            if (oldPriceEth == 0)
+            {
+                dashEthDown.Visible = false;
+                dashEthUp.Visible = false;
+                dashEthChangeUp.Visible = false;
+                dashEthChangeDown.Visible = false;
             }
             UpdateBTCPriceAsync();
+            UpdateETHPriceAsync();
             // Todo
         }
 
@@ -104,25 +115,109 @@ namespace BiTrade
                 SetConnectionQuality(-1);
                 return;
                 // LOG
-            }           
-            
+            }
 
-            dashLabelBtcPrice.Text = string.Format("{0:n0}", newPrice) + "$";
-            if (oldPrice != 0)
+            if (newPrice > 0)
             {
-                if (newPrice > oldPrice)
+                dashLabelBtcPrice.Text = string.Format("{0:n0}", newPrice) + "$";
+                if (oldPriceBtc != 0)
                 {
-                    dashBtcDOWN.Visible = false;
-                    dashBtcUP.Visible = true;
-                } else if (newPrice < oldPrice)
+                    if (newPrice > oldPriceBtc)
+                    {
+                        dashBtcDOWN.Visible = false;
+                        dashBtcUP.Visible = true;
+                    }
+                    else if (newPrice < oldPriceBtc)
+                    {
+                        dashBtcDOWN.Visible = true;
+                        dashBtcUP.Visible = false;
+                    }
+                }
+
+                oldPriceBtc = newPrice;
+
+
+                var market = await platform.GetMarketSummary("USDT-BTC");
+                if (market != null)
                 {
-                    dashBtcDOWN.Visible = true;
-                    dashBtcUP.Visible = false;
+                    dashLabelBtcHigh.Text = string.Format("{0:n0}", market.High) + "$";
+                    dashLabelBtcLow.Text = string.Format("{0:n0}", market.Low) + "$";
+                    decimal profit = (newPrice / (market.PrevDay)) - 1;
+                    dashLabelBtcChange.Text = String.Format("{0:P2}", profit);
+                    if (profit > 0)
+                    {
+                        dashBtcChangeUp.Visible = true;
+                        dashBtcChangeDown.Visible = false;
+                    }
+                    else
+                    {
+                        dashBtcChangeUp.Visible = false;
+                        dashBtcChangeDown.Visible = true;
+                    }
+
                 }
             }
 
-            oldPrice = newPrice;
+
         }
+
+        private async void UpdateETHPriceAsync()
+        {
+            decimal newPrice = 0;
+
+            try
+            {
+                var task = await platform.GetPriceCurrencyUsd("ETH");
+                if (task > 0)
+                    newPrice = task;
+            }
+            catch
+            {
+                // LOG
+            }
+
+            if (newPrice > 0)
+            {
+                dashLabelEthPrice.Text = string.Format("{0:n0}", newPrice) + "$";
+                if (oldPriceEth != 0)
+                {
+                    if (newPrice > oldPriceEth)
+                    {
+                        dashEthDown.Visible = false;
+                        dashEthUp.Visible = true;
+                    }
+                    else if (newPrice < oldPriceEth)
+                    {
+                        dashEthDown.Visible = true;
+                        dashEthUp.Visible = false;
+                    }
+                }
+
+                oldPriceEth = newPrice;
+
+                var market = await platform.GetMarketSummary("USDT-ETH");
+                if (market != null)
+                {
+                    dashLabelEthHigh.Text = string.Format("{0:n0}", market.High) + "$";
+                    dashLabelEthLow.Text = string.Format("{0:n0}", market.Low) + "$";
+                    decimal profit = (newPrice / (market.PrevDay)) - 1;
+                    dashLabelEthChange.Text = String.Format("{0:P2}", profit);
+                    if (profit > 0)
+                    {
+                        dashEthChangeUp.Visible = true;
+                        dashEthChangeDown.Visible = false;
+                    }
+                    else
+                    {
+                        dashEthChangeUp.Visible = false;
+                        dashEthChangeDown.Visible = true;
+                    }
+
+                }
+            }
+        }
+
+
 
         private void timerBtcPrice_Tick(object sender, EventArgs e)
         {
@@ -172,7 +267,8 @@ namespace BiTrade
                 ConnectionGood.Visible = true;
                 ConnectionLow.Visible = false;
                 ConnectionBad.Visible = false;
-            } else
+            }
+            else
             {
                 ConnectionGood.Visible = false;
                 ConnectionLow.Visible = true;
@@ -188,7 +284,7 @@ namespace BiTrade
         {
             panelMenuPicker.Height = buttonDashboard.Height;
             panelMenuPicker.Top = buttonDashboard.Top;
-            
+
             SetDashboardTab();
         }
 
@@ -209,7 +305,8 @@ namespace BiTrade
                         SetTradeTab();
                     }
                 }
-            } else
+            }
+            else
             {
                 SetTradeTab();
             }
@@ -236,7 +333,7 @@ namespace BiTrade
             else
             {
                 SetBalanceTab();
-            }       
+            }
         }
 
         private void buttonBittrex_Click(object sender, EventArgs e)
@@ -317,6 +414,11 @@ namespace BiTrade
 
 
         #endregion
+
+        private void timerEthPrice_Tick(object sender, EventArgs e)
+        {
+            UpdateETHPriceAsync();
+        }
     }
 
 

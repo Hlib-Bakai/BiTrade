@@ -1,4 +1,5 @@
 ﻿using BittrexSharp;
+using BittrexSharp.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -106,6 +107,35 @@ namespace BiTrade
         {
             var market = await bittrex.GetMarketSummary("USDT-BTC");
             return market.Result.Last;
+        }
+
+        public async Task<decimal> GetPriceCurrencyUsd(string currency)
+        {
+            var market = await bittrex.GetMarketSummary("USDT-" + currency);
+            if (market.Success)
+                return market.Result.Last;
+            else
+            {
+                var inBtc = await bittrex.GetMarketSummary("BTC-" + currency);
+                var price = await GetPriceBtc();
+                return inBtc.Result.Last * price;
+            }                
+        }
+
+        public async Task<decimal> GetBalance(string currency)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<MarketSummary> GetMarketSummary(string marketName)
+        {
+            var market = await bittrex.GetMarketSummary(marketName);
+            if (market.Success)
+                return market.Result;
+            else
+            {
+                return null;
+            }
         }
     }
 }
