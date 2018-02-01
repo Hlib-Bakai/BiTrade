@@ -56,6 +56,12 @@
             this.balanceLabelUsd = new System.Windows.Forms.Label();
             this.balanceLabelBtc = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.apiFail = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panelTabs = new System.Windows.Forms.Panel();
             this.buttonSettings = new System.Windows.Forms.Button();
             this.timerBtcPrice = new System.Windows.Forms.Timer(this.components);
@@ -74,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dashBtcDOWN)).BeginInit();
             this.balancePage.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.apiFail.SuspendLayout();
             this.panelTabs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectionGood)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectionLow)).BeginInit();
@@ -134,7 +141,7 @@
             this.buttonBalance.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonBalance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonBalance.UseVisualStyleBackColor = true;
-            this.buttonBalance.Click += new System.EventHandler(this.buttonBalance_Click);
+            this.buttonBalance.Click += new System.EventHandler(this.buttonBalance_ClickAsync);
             // 
             // buttonTrade
             // 
@@ -151,7 +158,7 @@
             this.buttonTrade.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonTrade.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonTrade.UseVisualStyleBackColor = true;
-            this.buttonTrade.Click += new System.EventHandler(this.buttonTrade_Click);
+            this.buttonTrade.Click += new System.EventHandler(this.buttonTrade_ClickAsync);
             // 
             // buttonDashboard
             // 
@@ -236,6 +243,7 @@
             this.tabControl1.Controls.Add(this.dashboardPage);
             this.tabControl1.Controls.Add(this.tradePage);
             this.tabControl1.Controls.Add(this.balancePage);
+            this.tabControl1.Controls.Add(this.apiFail);
             this.tabControl1.Location = new System.Drawing.Point(0, 2);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -355,9 +363,9 @@
             this.balanceLabelUsd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.balanceLabelUsd.Location = new System.Drawing.Point(83, 59);
             this.balanceLabelUsd.Name = "balanceLabelUsd";
-            this.balanceLabelUsd.Size = new System.Drawing.Size(18, 23);
+            this.balanceLabelUsd.Size = new System.Drawing.Size(105, 23);
             this.balanceLabelUsd.TabIndex = 3;
-            this.balanceLabelUsd.Text = "-";
+            this.balanceLabelUsd.Text = "..Loading..";
             // 
             // balanceLabelBtc
             // 
@@ -366,9 +374,9 @@
             this.balanceLabelBtc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.balanceLabelBtc.Location = new System.Drawing.Point(83, 17);
             this.balanceLabelBtc.Name = "balanceLabelBtc";
-            this.balanceLabelBtc.Size = new System.Drawing.Size(18, 23);
+            this.balanceLabelBtc.Size = new System.Drawing.Size(105, 23);
             this.balanceLabelBtc.TabIndex = 1;
-            this.balanceLabelBtc.Text = "-";
+            this.balanceLabelBtc.Text = "..Loading..";
             // 
             // label4
             // 
@@ -379,6 +387,82 @@
             this.label4.Size = new System.Drawing.Size(66, 30);
             this.label4.TabIndex = 2;
             this.label4.Text = "USD:";
+            // 
+            // apiFail
+            // 
+            this.apiFail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.apiFail.Controls.Add(this.button3);
+            this.apiFail.Controls.Add(this.button2);
+            this.apiFail.Controls.Add(this.textBox2);
+            this.apiFail.Controls.Add(this.textBox1);
+            this.apiFail.Controls.Add(this.label5);
+            this.apiFail.Location = new System.Drawing.Point(4, 30);
+            this.apiFail.Name = "apiFail";
+            this.apiFail.Size = new System.Drawing.Size(536, 411);
+            this.apiFail.TabIndex = 3;
+            this.apiFail.Text = "apiFail";
+            // 
+            // button3
+            // 
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.button3.Location = new System.Drawing.Point(316, 217);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(108, 56);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Binance";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.button2.Location = new System.Drawing.Point(126, 217);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(108, 56);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "Bittrex";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.textBox2.Location = new System.Drawing.Point(21, 180);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(497, 31);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.Text = "If you don\'t know what is api, refer to these links:";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.textBox1.Location = new System.Drawing.Point(21, 93);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(497, 51);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "Don\'t panic. Probably you didn\'t provide your API key and\\or secret or did a mist" +
+    "ake. Go to settings and try again.";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.label5.Location = new System.Drawing.Point(105, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(366, 33);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Can\'t access your account";
             // 
             // panelTabs
             // 
@@ -402,6 +486,7 @@
             this.buttonSettings.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_ClickAsync);
             // 
             // timerBtcPrice
             // 
@@ -485,6 +570,8 @@
             this.balancePage.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.apiFail.ResumeLayout(false);
+            this.apiFail.PerformLayout();
             this.panelTabs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ConnectionGood)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectionLow)).EndInit();
@@ -529,6 +616,12 @@
         private System.Windows.Forms.PictureBox ConnectionGood;
         private System.Windows.Forms.PictureBox ConnectionLow;
         private System.Windows.Forms.PictureBox ConnectionBad;
+        private System.Windows.Forms.TabPage apiFail;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label5;
     }
 }
 

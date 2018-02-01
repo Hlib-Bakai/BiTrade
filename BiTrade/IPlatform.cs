@@ -11,5 +11,6 @@ namespace BiTrade
         Task<decimal> GetBalanceBtc();
         Task<decimal> GetBalanceUsd();
         Task<decimal> GetPriceBtc();
+        Task<ApiStatus> CheckKeySecret();
     }
 }

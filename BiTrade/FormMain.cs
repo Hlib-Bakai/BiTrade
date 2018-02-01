@@ -14,13 +14,17 @@ namespace BiTrade
     public partial class FormMain : Form
     {
         IPlatform platform;
+        public bool apiCheck = false;
 
         public FormMain()
         {
             InitializeComponent();
             SetPlatformBittrex();
             SetDashboardTab();
+            CheckApi();
         }
+
+
 
         private void SetPlatformBittrex()
         {
@@ -31,6 +35,27 @@ namespace BiTrade
         {
             /// Todo
         }
+
+
+        #region Api
+
+        private void SetApiFailTab()
+        {
+            tabControl1.SelectTab("apiFail");
+            // Todo
+        }
+
+        private async Task<ApiStatus> CheckApi()
+        {
+            var res = await platform.CheckKeySecret();
+            if (res != ApiStatus.CONNECTION_TIMEOUT)
+            {
+                apiCheck = (res == ApiStatus.TRUE) ? true : false;
+            }
+            return res;
+        }
+
+        #endregion
 
         #region Dashboard
 
@@ -118,7 +143,7 @@ namespace BiTrade
 
         #region Balance
 
-        private async void SetBalanceTabAsync()
+        private async void SetBalanceTab()
         {
             tabControl1.SelectTab("balancePage");
 
@@ -163,24 +188,55 @@ namespace BiTrade
         {
             panelMenuPicker.Height = buttonDashboard.Height;
             panelMenuPicker.Top = buttonDashboard.Top;
-
+            
             SetDashboardTab();
         }
 
-        void buttonTrade_Click(object sender, EventArgs e)
+        async void buttonTrade_ClickAsync(object sender, EventArgs e)
         {
             panelMenuPicker.Height = buttonTrade.Height;
             panelMenuPicker.Top = buttonTrade.Top;
 
-            SetTradeTab();
+            if (!apiCheck)
+            {
+                SetApiFailTab();
+                var task = CheckApi();
+                var res = await Task.WhenAny(task, Task.Delay(1000));
+                if (res == task)
+                {
+                    if (task.Result == ApiStatus.TRUE)
+                    {
+                        SetTradeTab();
+                    }
+                }
+            } else
+            {
+                SetTradeTab();
+            }
         }
 
-        void buttonBalance_Click(object sender, EventArgs e)
+        async void buttonBalance_ClickAsync(object sender, EventArgs e)
         {
             panelMenuPicker.Height = buttonBalance.Height;
             panelMenuPicker.Top = buttonBalance.Top;
 
-            SetBalanceTabAsync();
+            if (!apiCheck)
+            {
+                SetApiFailTab();
+                var task = CheckApi();
+                var res = await Task.WhenAny(task, Task.Delay(1000));
+                if (res == task)
+                {
+                    if (task.Result == ApiStatus.TRUE)
+                    {
+                        SetTradeTab();
+                    }
+                }
+            }
+            else
+            {
+                SetBalanceTab();
+            }       
         }
 
         private void buttonBittrex_Click(object sender, EventArgs e)
@@ -196,6 +252,8 @@ namespace BiTrade
             buttonBinance.FlatAppearance.BorderSize = 1;
             SetPlatformBinance();
         }
+
+
 
         #endregion
 
@@ -220,7 +278,7 @@ namespace BiTrade
 
         #endregion
 
-        #region Close and minimize
+        #region Top menu
 
         private void CloseApp()
         {
@@ -247,11 +305,18 @@ namespace BiTrade
             MinimizeApp();
         }
 
-
+        private async void buttonSettings_ClickAsync(object sender, EventArgs e)
+        {
+            FormSettings formSettings = new FormSettings();
+            if (formSettings.ShowDialog(this) == DialogResult.OK)
+            {
+                apiCheck = false;
+                await CheckApi();
+            }
+        }
 
 
         #endregion
-
     }
 
 
