@@ -43,13 +43,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelTabs = new System.Windows.Forms.Panel();
-            this.buttonSettings = new System.Windows.Forms.Button();
-            this.timerBtcPrice = new System.Windows.Forms.Timer(this.components);
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.ConnectionGood = new System.Windows.Forms.PictureBox();
-            this.ConnectionLow = new System.Windows.Forms.PictureBox();
-            this.ConnectionBad = new System.Windows.Forms.PictureBox();
-            this.timerEthPrice = new System.Windows.Forms.Timer(this.components);
             this.tabControl1 = new BiTrade.TabControlWithoutHeader();
             this.dashboardPage = new System.Windows.Forms.TabPage();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -70,7 +63,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.panelEthUpDown = new System.Windows.Forms.Panel();
             this.dashEthUp = new System.Windows.Forms.PictureBox();
             this.dashEthDown = new System.Windows.Forms.PictureBox();
@@ -94,14 +86,18 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.buttonSettings = new System.Windows.Forms.Button();
+            this.timerBtcPrice = new System.Windows.Forms.Timer(this.components);
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.ConnectionGood = new System.Windows.Forms.PictureBox();
+            this.ConnectionLow = new System.Windows.Forms.PictureBox();
+            this.ConnectionBad = new System.Windows.Forms.PictureBox();
+            this.timerEthPrice = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             this.panelTabs.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ConnectionGood)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ConnectionLow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ConnectionBad)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.dashboardPage.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -119,6 +115,9 @@
             this.balancePage.SuspendLayout();
             this.panel2.SuspendLayout();
             this.apiFail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionGood)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionLow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionBad)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -280,74 +279,6 @@
             this.panelTabs.Size = new System.Drawing.Size(550, 451);
             this.panelTabs.TabIndex = 8;
             // 
-            // buttonSettings
-            // 
-            this.buttonSettings.FlatAppearance.BorderSize = 0;
-            this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSettings.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSettings.ForeColor = System.Drawing.Color.White;
-            this.buttonSettings.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettings.Image")));
-            this.buttonSettings.Location = new System.Drawing.Point(623, 12);
-            this.buttonSettings.Name = "buttonSettings";
-            this.buttonSettings.Size = new System.Drawing.Size(37, 35);
-            this.buttonSettings.TabIndex = 5;
-            this.buttonSettings.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.buttonSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonSettings.UseVisualStyleBackColor = true;
-            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_ClickAsync);
-            // 
-            // timerBtcPrice
-            // 
-            this.timerBtcPrice.Enabled = true;
-            this.timerBtcPrice.Interval = 1000;
-            this.timerBtcPrice.Tick += new System.EventHandler(this.timerBtcPrice_Tick);
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(210)))), ((int)(((byte)(0)))));
-            this.panel5.Location = new System.Drawing.Point(210, 70);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(547, 10);
-            this.panel5.TabIndex = 3;
-            // 
-            // ConnectionGood
-            // 
-            this.ConnectionGood.Image = ((System.Drawing.Image)(resources.GetObject("ConnectionGood.Image")));
-            this.ConnectionGood.Location = new System.Drawing.Point(582, 20);
-            this.ConnectionGood.Name = "ConnectionGood";
-            this.ConnectionGood.Size = new System.Drawing.Size(24, 24);
-            this.ConnectionGood.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ConnectionGood.TabIndex = 10;
-            this.ConnectionGood.TabStop = false;
-            // 
-            // ConnectionLow
-            // 
-            this.ConnectionLow.Image = ((System.Drawing.Image)(resources.GetObject("ConnectionLow.Image")));
-            this.ConnectionLow.Location = new System.Drawing.Point(582, 20);
-            this.ConnectionLow.Name = "ConnectionLow";
-            this.ConnectionLow.Size = new System.Drawing.Size(24, 24);
-            this.ConnectionLow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ConnectionLow.TabIndex = 11;
-            this.ConnectionLow.TabStop = false;
-            this.ConnectionLow.Visible = false;
-            // 
-            // ConnectionBad
-            // 
-            this.ConnectionBad.Image = ((System.Drawing.Image)(resources.GetObject("ConnectionBad.Image")));
-            this.ConnectionBad.Location = new System.Drawing.Point(582, 20);
-            this.ConnectionBad.Name = "ConnectionBad";
-            this.ConnectionBad.Size = new System.Drawing.Size(24, 24);
-            this.ConnectionBad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.ConnectionBad.TabIndex = 12;
-            this.ConnectionBad.TabStop = false;
-            this.ConnectionBad.Visible = false;
-            // 
-            // timerEthPrice
-            // 
-            this.timerEthPrice.Enabled = true;
-            this.timerEthPrice.Interval = 1000;
-            this.timerEthPrice.Tick += new System.EventHandler(this.timerEthPrice_Tick);
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.dashboardPage);
@@ -378,7 +309,6 @@
             this.dashboardPage.Controls.Add(this.label9);
             this.dashboardPage.Controls.Add(this.label8);
             this.dashboardPage.Controls.Add(this.label6);
-            this.dashboardPage.Controls.Add(this.panel7);
             this.dashboardPage.Controls.Add(this.panelEthUpDown);
             this.dashboardPage.Controls.Add(this.dashLabelEthPrice);
             this.dashboardPage.Controls.Add(this.label7);
@@ -396,7 +326,7 @@
             // 
             this.panel8.Controls.Add(this.dashEthChangeUp);
             this.panel8.Controls.Add(this.dashEthChangeDown);
-            this.panel8.Location = new System.Drawing.Point(498, 272);
+            this.panel8.Location = new System.Drawing.Point(505, 220);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(25, 25);
             this.panel8.TabIndex = 20;
@@ -425,7 +355,7 @@
             // 
             this.dashLabelEthChange.AutoSize = true;
             this.dashLabelEthChange.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.dashLabelEthChange.Location = new System.Drawing.Point(440, 276);
+            this.dashLabelEthChange.Location = new System.Drawing.Point(440, 224);
             this.dashLabelEthChange.Name = "dashLabelEthChange";
             this.dashLabelEthChange.Size = new System.Drawing.Size(15, 21);
             this.dashLabelEthChange.TabIndex = 19;
@@ -435,7 +365,7 @@
             // 
             this.dashLabelEthLow.AutoSize = true;
             this.dashLabelEthLow.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.dashLabelEthLow.Location = new System.Drawing.Point(123, 304);
+            this.dashLabelEthLow.Location = new System.Drawing.Point(123, 252);
             this.dashLabelEthLow.Name = "dashLabelEthLow";
             this.dashLabelEthLow.Size = new System.Drawing.Size(15, 21);
             this.dashLabelEthLow.TabIndex = 18;
@@ -445,7 +375,7 @@
             // 
             this.dashLabelEthHigh.AutoSize = true;
             this.dashLabelEthHigh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.dashLabelEthHigh.Location = new System.Drawing.Point(123, 276);
+            this.dashLabelEthHigh.Location = new System.Drawing.Point(123, 224);
             this.dashLabelEthHigh.Name = "dashLabelEthHigh";
             this.dashLabelEthHigh.Size = new System.Drawing.Size(15, 21);
             this.dashLabelEthHigh.TabIndex = 17;
@@ -455,7 +385,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(312, 275);
+            this.label13.Location = new System.Drawing.Point(312, 223);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(131, 22);
             this.label13.TabIndex = 16;
@@ -465,7 +395,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(26, 302);
+            this.label14.Location = new System.Drawing.Point(26, 250);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(91, 22);
             this.label14.TabIndex = 15;
@@ -475,7 +405,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(22, 275);
+            this.label15.Location = new System.Drawing.Point(22, 223);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(95, 22);
             this.label15.TabIndex = 14;
@@ -485,7 +415,7 @@
             // 
             this.panel6.Controls.Add(this.dashBtcChangeUp);
             this.panel6.Controls.Add(this.dashBtcChangeDown);
-            this.panel6.Location = new System.Drawing.Point(498, 71);
+            this.panel6.Location = new System.Drawing.Point(505, 71);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(25, 25);
             this.panel6.TabIndex = 13;
@@ -570,19 +500,11 @@
             this.label6.TabIndex = 7;
             this.label6.Text = "24h High:";
             // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(210)))), ((int)(((byte)(0)))));
-            this.panel7.Location = new System.Drawing.Point(1, 182);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(539, 5);
-            this.panel7.TabIndex = 6;
-            // 
             // panelEthUpDown
             // 
             this.panelEthUpDown.Controls.Add(this.dashEthUp);
             this.panelEthUpDown.Controls.Add(this.dashEthDown);
-            this.panelEthUpDown.Location = new System.Drawing.Point(377, 226);
+            this.panelEthUpDown.Location = new System.Drawing.Point(259, 183);
             this.panelEthUpDown.Name = "panelEthUpDown";
             this.panelEthUpDown.Size = new System.Drawing.Size(25, 25);
             this.panelEthUpDown.TabIndex = 4;
@@ -612,7 +534,7 @@
             this.dashLabelEthPrice.AutoSize = true;
             this.dashLabelEthPrice.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashLabelEthPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.dashLabelEthPrice.Location = new System.Drawing.Point(276, 221);
+            this.dashLabelEthPrice.Location = new System.Drawing.Point(158, 178);
             this.dashLabelEthPrice.Name = "dashLabelEthPrice";
             this.dashLabelEthPrice.Size = new System.Drawing.Size(21, 30);
             this.dashLabelEthPrice.TabIndex = 3;
@@ -622,7 +544,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(138, 217);
+            this.label7.Location = new System.Drawing.Point(20, 174);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(137, 33);
             this.label7.TabIndex = 2;
@@ -632,7 +554,7 @@
             // 
             this.panelBtcUpDown.Controls.Add(this.dashBtcUP);
             this.panelBtcUpDown.Controls.Add(this.dashBtcDOWN);
-            this.panelBtcUpDown.Location = new System.Drawing.Point(377, 29);
+            this.panelBtcUpDown.Location = new System.Drawing.Point(259, 32);
             this.panelBtcUpDown.Name = "panelBtcUpDown";
             this.panelBtcUpDown.Size = new System.Drawing.Size(25, 25);
             this.panelBtcUpDown.TabIndex = 1;
@@ -662,7 +584,7 @@
             this.dashLabelBtcPrice.AutoSize = true;
             this.dashLabelBtcPrice.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dashLabelBtcPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.dashLabelBtcPrice.Location = new System.Drawing.Point(276, 24);
+            this.dashLabelBtcPrice.Location = new System.Drawing.Point(158, 27);
             this.dashLabelBtcPrice.Name = "dashLabelBtcPrice";
             this.dashLabelBtcPrice.Size = new System.Drawing.Size(21, 30);
             this.dashLabelBtcPrice.TabIndex = 1;
@@ -672,7 +594,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(138, 21);
+            this.label3.Location = new System.Drawing.Point(20, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(143, 33);
             this.label3.TabIndex = 0;
@@ -828,6 +750,74 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Can\'t access your account";
             // 
+            // buttonSettings
+            // 
+            this.buttonSettings.FlatAppearance.BorderSize = 0;
+            this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSettings.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSettings.ForeColor = System.Drawing.Color.White;
+            this.buttonSettings.Image = ((System.Drawing.Image)(resources.GetObject("buttonSettings.Image")));
+            this.buttonSettings.Location = new System.Drawing.Point(623, 12);
+            this.buttonSettings.Name = "buttonSettings";
+            this.buttonSettings.Size = new System.Drawing.Size(37, 35);
+            this.buttonSettings.TabIndex = 5;
+            this.buttonSettings.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_ClickAsync);
+            // 
+            // timerBtcPrice
+            // 
+            this.timerBtcPrice.Enabled = true;
+            this.timerBtcPrice.Interval = 1000;
+            this.timerBtcPrice.Tick += new System.EventHandler(this.timerBtcPrice_Tick);
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(210)))), ((int)(((byte)(0)))));
+            this.panel5.Location = new System.Drawing.Point(210, 75);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(557, 5);
+            this.panel5.TabIndex = 3;
+            // 
+            // ConnectionGood
+            // 
+            this.ConnectionGood.Image = ((System.Drawing.Image)(resources.GetObject("ConnectionGood.Image")));
+            this.ConnectionGood.Location = new System.Drawing.Point(582, 20);
+            this.ConnectionGood.Name = "ConnectionGood";
+            this.ConnectionGood.Size = new System.Drawing.Size(24, 24);
+            this.ConnectionGood.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ConnectionGood.TabIndex = 10;
+            this.ConnectionGood.TabStop = false;
+            // 
+            // ConnectionLow
+            // 
+            this.ConnectionLow.Image = ((System.Drawing.Image)(resources.GetObject("ConnectionLow.Image")));
+            this.ConnectionLow.Location = new System.Drawing.Point(582, 20);
+            this.ConnectionLow.Name = "ConnectionLow";
+            this.ConnectionLow.Size = new System.Drawing.Size(24, 24);
+            this.ConnectionLow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ConnectionLow.TabIndex = 11;
+            this.ConnectionLow.TabStop = false;
+            this.ConnectionLow.Visible = false;
+            // 
+            // ConnectionBad
+            // 
+            this.ConnectionBad.Image = ((System.Drawing.Image)(resources.GetObject("ConnectionBad.Image")));
+            this.ConnectionBad.Location = new System.Drawing.Point(582, 20);
+            this.ConnectionBad.Name = "ConnectionBad";
+            this.ConnectionBad.Size = new System.Drawing.Size(24, 24);
+            this.ConnectionBad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.ConnectionBad.TabIndex = 12;
+            this.ConnectionBad.TabStop = false;
+            this.ConnectionBad.Visible = false;
+            // 
+            // timerEthPrice
+            // 
+            this.timerEthPrice.Enabled = true;
+            this.timerEthPrice.Interval = 1000;
+            this.timerEthPrice.Tick += new System.EventHandler(this.timerEthPrice_Tick);
+            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -856,9 +846,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panelTabs.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ConnectionGood)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ConnectionLow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ConnectionBad)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.dashboardPage.ResumeLayout(false);
             this.dashboardPage.PerformLayout();
@@ -879,6 +866,9 @@
             this.panel2.PerformLayout();
             this.apiFail.ResumeLayout(false);
             this.apiFail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionGood)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionLow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ConnectionBad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -931,7 +921,6 @@
         private System.Windows.Forms.PictureBox dashEthUp;
         private System.Windows.Forms.PictureBox dashEthDown;
         private System.Windows.Forms.Timer timerEthPrice;
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label dashLabelBtcChange;
         private System.Windows.Forms.Label dashLabelBtcLow;
         private System.Windows.Forms.Label dashLabelBtcHigh;
