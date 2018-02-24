@@ -28,7 +28,7 @@ namespace BiTrade
             }
             else
             {
-                bittrex = new Bittrex();
+                bittrex = new Bittrex("", "");
             }
         }
 
